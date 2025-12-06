@@ -1,0 +1,43 @@
+{
+  "name": "chaosbuilder",
+  "version": "1.0.0",
+  "description": "Custom tabletop RPG game engine - ChaosBuilder",
+  "main": "src/main/main.js",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:react\" \"npm run dev:electron\"",
+    "dev:react": "vite",
+    "dev:electron": "wait-on http://localhost:3000 && electron .",
+    "electron": "electron .",
+    "build": "vite build",
+    "pack": "electron-builder",
+    "dist": "npm run build && electron-builder"
+  },
+  "keywords": ["rpg", "dnd", "dm", "game-engine", "chaosbuilder"],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.1.0",
+    "concurrently": "^8.0.0",
+    "electron": "^27.0.0",
+    "electron-builder": "^24.6.0",
+    "vite": "^4.4.0",
+    "wait-on": "^7.0.0"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sqlite3": "^5.1.0"
+  },
+  "build": {
+    "appId": "com.chaosbuilder.app",
+    "productName": "ChaosBuilder",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "dist/**/*",
+      "src/main/**/*",
+      "node_modules/**/*"
+    ]
+  }
+}
